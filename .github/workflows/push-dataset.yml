@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies for conversion to parquet
         run: |
-          pip install pandas
+          apt-get install python3-pandas
 
       - name: Convert json to parquet
         run: |
