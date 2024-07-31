@@ -1,0 +1,11 @@
+[
+    [{"from": "human", "value": "What are some interesting facts about penguins?"}, {"from": "gpt", "value": "{\"type\": \"dynamic\", \"category\": \"None\", \"content\": \"None\"}"}],
+    [{"from": "human", "value": "How does photosynthesis work in plants?"}, {"from": "gpt", "value": "{\"type\": \"dynamic\", \"category\": \"None\", \"content\": \"None\"}"}],
+    [{"from": "human", "value": "What are the benefits of practicing yoga?"}, {"from": "gpt", "value": "{\"type\": \"dynamic\", \"category\": \"None\", \"content\": \"None\"}"}],
+    [{"from": "human", "value": "Who invented the telephone and when?"}, {"from": "gpt", "value": "{\"type\": \"dynamic\", \"category\": \"None\", \"content\": \"None\"}"}],
+    [{"from": "human", "value": "What is the capital of Australia?"}, {"from": "gpt", "value": "{\"type\": \"dynamic\", \"category\": \"None\", \"content\": \"None\"}"}],
+    [{"from": "human", "value": "What are the primary components of the Earth's atmosphere?"}, {"from": "gpt", "value": "{\"type\": \"dynamic\", \"category\": \"None\", \"content\": \"None\"}"}],
+    [{"from": "human", "value": "How do bees communicate with each other?"}, {"from": "gpt", "value": "{\"type\": \"dynamic\", \"category\": \"None\", \"content\": \"None\"}"}],
+    [{"from": "human", "value": "What is the theory of relativity?"}, {"from": "gpt", "value": "{\"type\": \"dynamic\", \"category\": \"None\", \"content\": \"None\"}"}],
+    [{"from": "human", "value": "What is the process of metamorphosis in insects?"}, {"from": "gpt", "value": "{\"type\": \"dynamic\", \"category\": \"None\", \"content\": \"None\"}"}]
+]
