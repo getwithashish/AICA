@@ -22,6 +22,7 @@ jobs:
         run: |
           sudo apt-get install python3-pandas
           pip install pandas
+          pip install pyarrow
 
       - name: Convert json to parquet
         run: |
