@@ -6,7 +6,7 @@ on:
       - "dev"
 
 jobs:
-  execute:
+  prepare-dataset:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies for conversion to parquet
         run: |
-          apt-get install python3-pandas
+          sudo apt-get install python3-pandas
 
       - name: Convert json to parquet
         run: |
