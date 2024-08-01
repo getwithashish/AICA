@@ -43,3 +43,5 @@ def push_parquet():
 if __name__ == "__main__":
     raw_json_data = combine_json_arrays(".")
     create_parquet_from_json(raw_json_data)
+    login_huggingface()
+    push_parquet()
