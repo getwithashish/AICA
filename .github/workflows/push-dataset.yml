@@ -3,7 +3,7 @@ name: Push Dataset and Finetune
 on:
   push:
     branches:
-      - "dev"
+      - "main"
 
 jobs:
   prepare-dataset:
@@ -26,6 +26,13 @@ jobs:
           pip install datasets
           pip install huggingface_hub
           pip install python-decouple
+
+      - name: Convert json to parquet and save it in huggingface
+        run: |
+          echo "================="
+          echo "Add environment variables to .env file"
+          echo "================="
+          echo "DJANGO_SECRET_KEY=${{ secrets.HF_TOKEN }}" >> .env
 
       - name: Convert json to parquet and save it in huggingface
         run: |
