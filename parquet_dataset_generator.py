@@ -7,7 +7,7 @@ from decouple import config
 
 
 def login_huggingface():
-    login(token="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", add_to_git_credential=True)
+    login(token=config("HF_TOKEN"), add_to_git_credential=True)
 
 
 def combine_json_arrays(directory_path: str) -> list:
@@ -15,7 +15,7 @@ def combine_json_arrays(directory_path: str) -> list:
     json_files = glob.glob(directory_path + "/*.json")
 
     for file_name in json_files:
-        with open(file_name, 'r') as file:
+        with open(file_name, "r") as file:
             try:
                 data = json.load(file)
                 if isinstance(data, list):
@@ -31,12 +31,12 @@ def combine_json_arrays(directory_path: str) -> list:
 def create_parquet_from_json(json_data: list):
     dataset_raw_combined = {"conversations": json_data}
     df = pd.DataFrame(dataset_raw_combined)
-    df.to_parquet('internal_dataset.parquet', index=False)
+    df.to_parquet("internal_dataset.parquet", index=False)
 
 
 def push_parquet():
-    dataset = load_dataset('parquet', data_files='internal_dataset.parquet')
-    dataset_repo_name = 'getwithashish/internal-dept-dataset'
+    dataset = load_dataset("parquet", data_files="internal_dataset.parquet")
+    dataset_repo_name = "getwithashish/internal-dept-dataset"
     dataset.push_to_hub(dataset_repo_name)
 
 

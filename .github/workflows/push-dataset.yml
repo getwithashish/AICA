@@ -8,6 +8,7 @@ on:
 jobs:
   prepare-dataset:
     runs-on: ubuntu-latest
+    environment: huggingface
 
     steps:
       - name: Checkout repository
