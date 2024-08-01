@@ -27,7 +27,7 @@ jobs:
           pip install huggingface_hub
           pip install python-decouple
 
-      - name: Convert json to parquet and save it in huggingface
+      - name: Add huggingface token to .env
         run: |
           echo "================="
           echo "Add environment variables to .env file"
