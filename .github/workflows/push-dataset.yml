@@ -32,7 +32,7 @@ jobs:
           echo "================="
           echo "Add environment variables to .env file"
           echo "================="
-          echo "DJANGO_SECRET_KEY=${{ secrets.HF_TOKEN }}" >> .env
+          echo "HF_TOKEN=${{ secrets.HF_TOKEN }}" >> .env
 
       - name: Convert json to parquet and save it in huggingface
         run: |
