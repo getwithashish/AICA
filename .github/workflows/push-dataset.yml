@@ -23,19 +23,13 @@ jobs:
           sudo apt-get install python3-pandas
           pip install pandas
           pip install pyarrow
+          pip install datasets
+          pip install huggingface_hub
+          pip install python-decouple
 
-      - name: Convert json to parquet
+      - name: Convert json to parquet and save it in huggingface
         run: |
           python3 parquet_dataset_generator.py
-
-      - name: Install dependencies to push to huggingface
-        run: |
-          pip install datasets huggingface-hub
-
-      - name: Push to huggingface
-        run: |
-          datasets-cli login --token ${{ secrets.HF_TOKEN }}
-          datasets-cli upload ./internal_dataset.parquet getwithashish/internal-dept-dataset
 
   # finetune:
   #   runs-on: ubuntu-latest
