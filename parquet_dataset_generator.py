@@ -7,7 +7,7 @@ from decouple import config
 
 
 def login_huggingface():
-    login(token=config("HF_TOKEN"), add_to_git_credential=True)
+    login(token="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", add_to_git_credential=True)
 
 
 def combine_json_arrays(directory_path: str) -> list:
