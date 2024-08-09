@@ -34,7 +34,13 @@ jobs:
           tags: getwithashish/expchatbot:latest
       
       - name: Check disk usage
-        run: du -h
+        run: df -h
+      
+      - name: Release space
+        run: rm -rf "/usr/local/share/boost"
+
+      - name: Release more space
+        run: rm -rf "$AGENT_TOOLSDIRECTORY"
       
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
