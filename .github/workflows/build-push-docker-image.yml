@@ -25,6 +25,12 @@ jobs:
       
       - name: Check disk usage
         run: du -h
+      
+      - name: Release space
+        run: rm -rf "/usr/local/share/boost"
+
+      - name: Release more space
+        run: rm -rf "$AGENT_TOOLSDIRECTORY"
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
@@ -35,12 +41,6 @@ jobs:
       
       - name: Check disk usage
         run: df -h
-      
-      - name: Release space
-        run: rm -rf "/usr/local/share/boost"
-
-      - name: Release more space
-        run: rm -rf "$AGENT_TOOLSDIRECTORY"
       
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
