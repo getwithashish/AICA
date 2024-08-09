@@ -7,7 +7,7 @@ on:
 
 jobs:
   prepare-dataset:
-    runs-on: macos-latest
+    runs-on: windows-latest
     environment: docker-container-registry
 
     steps:
