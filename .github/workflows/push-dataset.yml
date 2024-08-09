@@ -3,11 +3,12 @@ name: Push Dataset and Finetune
 on:
   push:
     branches:
-      - "main"
+      - "dataset"
 
 jobs:
   prepare-dataset:
     runs-on: ubuntu-latest
+    environment: huggingface
 
     steps:
       - name: Checkout repository
@@ -16,7 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install dependencies for conversion to parquet
         run: |
@@ -27,33 +28,28 @@ jobs:
           pip install huggingface_hub
           pip install python-decouple
 
-      - name: Convert json to parquet and save it in huggingface
+      - name: Add huggingface token to .env
         run: |
           echo "================="
           echo "Add environment variables to .env file"
           echo "================="
-          echo "DJANGO_SECRET_KEY=${{ secrets.HF_TOKEN }}" >> .env
+          touch .env
+          echo "HF_TOKEN=${{ secrets.HF_TOKEN }}" >> .env
 
       - name: Convert json to parquet and save it in huggingface
         run: |
           python3 parquet_dataset_generator.py
 
-  # finetune:
-  #   runs-on: ubuntu-latest
-
+  # finetune-ai-model:
   #   steps:
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v2
-
-  #     - name: Set up Python
-  #       uses: actions/setup-python@v2
-  #       with:
-  #         python-version: '3.10'
-
-  #     - name: Install dependencies
+  #     - name: Install dependencies for creating Vast.ai instance, Create the vast.ai instance
   #       run: |
-  #         pip install papermill
+  #         pip install --upgrade vastai
 
-  #     - name: Execute Notebook
+  #     - name: Set up API key of Vast.ai
   #       run: |
-  #         papermill path/to/your/notebook.ipynb path/to/your/output-notebook.ipynb
+  #         vastai set api-key ${{ secrets.VASTAI_TOKEN }}
+      
+  #     - name: Find the instance according to the requirements
+  #       run: |
+          

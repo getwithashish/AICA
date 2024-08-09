@@ -10,6 +10,8 @@
     [{"from": "human", "value": "What is LnD?"}, {"from": "gpt", "value": "{\"type\": \"static\", \"category\": \"LnD\", \"content\": \"LnD stands for Learning and Development. It is a department that focuses on learning and development of the employees.\"}"}],
     [{"from": "human", "value": "How can I connect with LnD?"}, {"from": "gpt", "value": "{\"type\": \"static\", \"category\": \"LnD\", \"content\": \"To connect with LnD, you can mail them at lnd@experionglobal.com.\"}"}],
     [{"from": "human", "value": "What are the upcoming learnings?"}, {"from": "gpt", "value": "{\"type\": \"dynamic\", \"category\": \"LnD\", \"content\": \"lnd_upcoming_courses\"}"}],
+    [{"from": "human", "value": "What all are the learnings coming in future?"}, {"from": "gpt", "value": "{\"type\": \"dynamic\", \"category\": \"LnD\", \"content\": \"lnd_upcoming_courses\"}"}],
     [{"from": "human", "value": "What are my learnings?"}, {"from": "gpt", "value": "{\"type\": \"dynamic\", \"category\": \"LnD\", \"content\": \"lnd_my_courses\"}"}],
+    [{"from": "human", "value": "Get my learnings"}, {"from": "gpt", "value": "{\"type\": \"dynamic\", \"category\": \"LnD\", \"content\": \"lnd_my_courses\"}"}],
     [{"from": "human", "value": "List my learnings?"}, {"from": "gpt", "value": "{\"type\": \"dynamic\", \"category\": \"LnD\", \"content\": \"lnd_my_courses\"}"}]
 ]
