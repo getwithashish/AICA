@@ -1,3 +1,8 @@
+*.cpython*
+
 .env
+
+venv/*
+
 .vscode
 ./vscode/*
