@@ -8,7 +8,7 @@ from model.chat_message_model import ChatMessageModel
 
 
 class ChatModel(Document):
-    user_id: UUID
+    user_id: UUID = Field(alias="_id")
     chat_id: UUID = Field(default_factory=uuid4)
     chat_title: str
     updated_at: datetime
@@ -17,7 +17,6 @@ class ChatModel(Document):
     class Settings:
         name = "chat_collection"
         indexes = [
-            {"fields": ["user_id"], "unique": True},
             {"fields": ["updated_at"]},
             {"fields": ["user_id", "created_at"]},  # Compound index
         ]
