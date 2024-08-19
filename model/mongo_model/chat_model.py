@@ -21,3 +21,4 @@ class ChatModel(Document):
             {"fields": ["updated_at"]},
             {"fields": ["user_id", "created_at"]},  # Compound index
         ]
+        keep_nulls = False
