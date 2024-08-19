@@ -14,12 +14,6 @@ class ChatRequestDataModel(BaseModel):
     role: ChatRequestRoleEnum
     content: str
 
-    # @field_validator("role")
-    # def role_must_not_be_empty(cls, role_value):
-    #     if not role_value.strip():
-    #         raise ValueError("Role must not be empty")
-    #     return role_value
-
 
 class ChatRequestModel(BaseModel):
     chatId: Optional[uuid.UUID] = None
