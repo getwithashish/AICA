@@ -3,7 +3,7 @@ from openai import AsyncOpenAI
 from openai.types.chat.chat_completion import Choice
 
 from client.ai_client import AIClient
-from client.config import MODEL_NAME, OPENAI_API_BASE, USER_ROLE_NAME
+from client.openai.config import MODEL_NAME, OPENAI_API_BASE, USER_ROLE_NAME
 
 
 class OpenAIClient(AIClient):
