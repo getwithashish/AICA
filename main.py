@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from client.mongo.mongo_client import MongoClient
 from controller import chat_controller
@@ -13,6 +14,15 @@ app = FastAPI(
         MongoClient.init,
     ],
 )
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 app.include_router(
     chat_controller.chat_router,
     prefix="/v1",
