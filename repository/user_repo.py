@@ -1,11 +1,19 @@
+from abc import ABC, abstractmethod
 from uuid import UUID
 
-from model.mongo_model.chat_model import ChatModel
 
-
-class UserRepo:
+class UserRepo(ABC):
 
     @staticmethod
+    @abstractmethod
     async def check_user_id_exists(user_id: UUID) -> bool:
-        user_exists = await ChatModel.find_one(ChatModel.user_id == user_id).exists()
-        return user_exists
+        """
+        Check whether the User ID exists or not
+
+        Args:
+            user_id (UUID): ID of the User
+
+        Returns:
+            bool: True if user exists, else False
+        """
+        pass
