@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  mongodb-chatbot-db:
+    container_name: mongodb-chatbot-db
+    image: "mongo:latest"
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=chatbot
+      - MONGO_INITDB_ROOT_PASSWORD=chatbot
+    ports:
+      - 27017:27017
+    
+  expchatbot:
+    container_name: expchatbot
+    image: expchatbot-image
+    build: .
+    ports:
+      - 8888:8888
+    restart: always
+    depends_on:
+      - mongodb-chatbot-db
