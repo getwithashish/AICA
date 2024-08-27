@@ -21,7 +21,7 @@ class AIClient(ABC):
 
     @staticmethod
     @abstractmethod
-    def chat_message_formatter(messages: List[ChatRequestDataModel]):
+    def format_chat_message(messages: List[ChatRequestDataModel]):
         """
         Transforms the received request messages to a format understood by the AI Client
 
@@ -32,7 +32,7 @@ class AIClient(ABC):
 
     @staticmethod
     @abstractmethod
-    def ai_response_formatter(response: object):
+    def format_ai_response(response: object):
         """
         Transforms the inference from AI client to a format that can be used by the application
 
@@ -43,7 +43,7 @@ class AIClient(ABC):
 
     @staticmethod
     @abstractmethod
-    def ai_response_confidence_calculator(response: object):
+    def calculate_ai_response_confidence(response: object):
         """
         Calculates the confidence score of the inference from AI Client
 
