@@ -6,7 +6,7 @@ from pydantic import BaseModel
 
 class ChatRequestRoleEnum(str, Enum):
     tool = "tool"
-    tool_resposne = "tool_response"
+    tool_response = "tool_response"
     human = "human"
 
 
