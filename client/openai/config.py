@@ -3,5 +3,6 @@ from decouple import config
 
 MODEL_NAME = config("MODEL_NAME")
 OPENAI_API_BASE = config("OPENAI_API_BASE")
+OPENAI_KEY = config("OPENAI_KEY")
 USER_ROLE_NAME = config("USER_ROLE_NAME")
 ASSISTANT_ROLE_NAME = config("ASSISTANT_ROLE_NAME")
