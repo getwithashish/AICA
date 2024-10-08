@@ -26,7 +26,7 @@ app.add_middleware(
 app.include_router(
     chat_controller.chat_router,
     prefix="/v1",
-    tags=["Image"],
+    tags=["Chat"],
 )
 
 exception_handler.include_exception_handler_in_app(app=app)
