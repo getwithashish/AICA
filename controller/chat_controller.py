@@ -1,10 +1,11 @@
 from fastapi import APIRouter, Depends, Header
+from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 
 from client.ai_client import AIClient
 from client.openai.openai_client import OpenAIClient
 from exceptions import UnauthorizedUserException
-from messages import AI_INFERENCE_SUCCESSFUL, USER_NOT_SPECIFIED
+from messages import AI_INFERENCE_SUCCESSFUL, CHAT_LIST_RETRIEVED, USER_NOT_SPECIFIED
 from model.chat_request_model import ChatRequestModel
 from model.response_model import ResponseModel
 from repository.chat_repo import ChatRepo
@@ -42,6 +43,29 @@ async def create_chat(
         user_repo=user_repo,
     )
 
-    # TODO The message should be different for ai response and tool
-    response = ResponseModel(message=AI_INFERENCE_SUCCESSFUL, data=chat_response.model_dump())
+    response = ResponseModel(
+        message=AI_INFERENCE_SUCCESSFUL, data=chat_response.model_dump()
+    )
     return JSONResponse(status_code=201, content=response.model_dump())
+
+
+@chat_router.get("/chat/list")
+async def list_chats(
+    x_user_token: str = Header(None),
+    chat_repo: ChatRepo = Depends(MongoChatRepo),
+    user_repo: UserRepo = Depends(MongoUserRepo),
+):
+    if not x_user_token:
+        raise UnauthorizedUserException(USER_NOT_SPECIFIED)
+
+    user_id = StringToUuidConverter.convert_to_uuidv5(x_user_token)
+
+    # Fetch the list of chats for the user
+    chats = await ChatService.find_chats_by_user(
+        user_id=user_id, chat_repo=chat_repo, user_repo=user_repo
+    )
+
+    response = ResponseModel(
+        message=CHAT_LIST_RETRIEVED, data=jsonable_encoder(chats)
+    )
+    return JSONResponse(status_code=200, content=response.model_dump())
