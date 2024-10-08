@@ -2,7 +2,6 @@ from typing import List
 from openai import AsyncOpenAI
 from openai.types.chat.chat_completion import Choice
 import numpy as np
-from pydantic import BaseModel
 
 from client.ai_client import AIClient
 from client.openai.config import (
@@ -23,14 +22,6 @@ class OpenAIClient(AIClient):
         self.client = AsyncOpenAI(base_url=OPENAI_API_BASE, api_key=OPENAI_KEY)
 
     async def infer_from_text(self, messages: List) -> Choice:
-        # class Dummy_Dict_Data(BaseModel):
-        #     content: str = "Hello, How are you?"
-
-        # class Dummy_Dict(BaseModel):
-        #     message: Dummy_Dict_Data = Dummy_Dict_Data()
-
-        # ai_dummy_value = Dummy_Dict()
-        # return ai_dummy_value.model_dump()
         chat_completion = await self.client.chat.completions.create(
             messages=messages,
             model=f"{self.model_name}",
@@ -56,12 +47,10 @@ class OpenAIClient(AIClient):
 
     @staticmethod
     def format_ai_response(response: Choice) -> str:
-        # return response["message"]["content"]
         return response.message.content
 
     @staticmethod
     def calculate_ai_response_confidence(response: Choice) -> float:
-        # return 70.0
         logprobs: List[float] = []
         token_logprobs = response.logprobs.content
         for token_logprob in token_logprobs:
