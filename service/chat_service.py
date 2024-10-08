@@ -123,10 +123,12 @@ class ChatService:
         return chat_response_model
 
     @staticmethod
-    async def generate_chat_title(
-        messages: List, ai_client: AIClient
-    ) -> ChatMessageModel:
-        # TODO Generate chat title using AI
-        chat_title = "Dummy Title"
-        chat_response_model = ChatMessageModel(content=chat_title)
-        return chat_response_model
+    async def find_chats_by_user(
+        user_id: str, chat_repo: ChatRepo, user_repo: UserRepo
+    ) -> ChatListResponseModel:
+        if not await user_repo.check_user_id_exists(user_id=user_id):
+            raise UnauthorizedUserException(USER_DOES_NOT_EXIST)
+
+        chats = await chat_repo.get_all_chats_of_user(user_id=user_id)
+        chat_list = ChatListResponseModel(userId=user_id, chats=chats)
+        return chat_list

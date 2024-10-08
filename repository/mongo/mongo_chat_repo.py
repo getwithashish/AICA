@@ -10,16 +10,6 @@ class MongoChatRepo(ChatRepo):
 
     @staticmethod
     async def get_chat_by_id(chat_id: UUID = None, user_id: UUID = None):
-        # if user_id:
-        #     chat = await ChatModel.find_one(
-        #         ChatModel.user_id == user_id, ChatModel.chat_id == chat_id
-        #     )
-        # elif chat_id:
-        #     chat = await ChatModel.find_one(ChatModel.chat_id == chat_id)
-        # else:
-        #     # Raise Error
-        #     pass
-
         chat = await ChatModel.find_one(
             ChatModel.user_id == user_id, ChatModel.chat_id == chat_id
         )
@@ -28,7 +18,8 @@ class MongoChatRepo(ChatRepo):
 
     @staticmethod
     async def get_all_chats_of_user(user_id: UUID):
-        pass
+        chats = await ChatModel.find(ChatModel.user_id == user_id).to_list()
+        return chats
 
     @staticmethod
     async def save_new_chat(chat: ChatModel) -> ChatModel:
